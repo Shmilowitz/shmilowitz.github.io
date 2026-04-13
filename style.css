@@ -7,33 +7,38 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --accent:    #cc0000;
-  --accent-dim:#8b0000;
-  --bg:        #0a0a0a;
-  --bg2:       #111111;
-  --bg3:       #1a1a1a;
-  --text:      #e8e8e8;
-  --text-dim:  #888;
-  --border:    #222;
-  --nav-h:     64px;
-  --side-bar:  6px;
-  --radius:    4px;
+  --accent:     #e53935;
+  --accent-dim: #9b1a1a;
+  --bg:         #0a0a0a;
+  --bg2:        #111111;
+  --bg3:        #1a1a1a;
+  --text:       #ffffff;
+  --text-dim:   #999;
+  --border:     #222;
+  --nav-bg:     rgba(10,10,10,0.98);
+  --nav-h:      64px;
+  --side-bar:   0px;
+  --radius:     4px;
   --transition: 0.3s ease;
+  --font-head:  'Rajdhani', sans-serif;
+  --font-mono:  'Share Tech Mono', monospace;
+  --font-body:  'DM Sans', sans-serif;
 }
 
 html[data-theme="light"] {
   --bg:        #f4f4f4;
   --bg2:       #eaeaea;
-  --bg3:       #dedede;
+  --bg3:       #e0e0e0;
   --text:      #111111;
   --text-dim:  #555555;
   --border:    #cccccc;
+  --nav-bg:    rgba(244,244,244,0.98);
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; font-size: 100%; scroll-padding-top: calc(var(--nav-h) + 1rem); }
 
 body {
-  font-family: 'Roboto', 'Segoe UI', sans-serif;
+  font-family: var(--font-body);
   background: var(--bg);
   color: var(--text);
   line-height: 1.7;
@@ -43,8 +48,48 @@ body {
   overflow-x: hidden;
 }
 
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.10) 2px, rgba(0,0,0,0.10) 4px);
+  pointer-events: none;
+  z-index: 9999;
+}
+html[data-theme="light"] body::before { display: none; }
+
+/* ── Scroll progress bar ── */
+#scroll-progress {
+  position: fixed;
+  top: var(--nav-h);
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent), 0 0 16px var(--accent-dim);
+  z-index: 999;
+  transition: width 0.08s linear;
+}
+#scroll-progress::after {
+  content: attr(data-pct);
+  position: absolute;
+  right: 0;
+  top: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 1px;
+  color: var(--accent);
+  background: var(--bg);
+  border: 1px solid var(--accent-dim);
+  padding: 1px 5px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+#scroll-progress.show-pct::after { opacity: 1; }
+
 a { color: var(--accent); text-decoration: none; transition: color var(--transition); }
-a:hover { color: #ff3333; }
+a:hover { color: #ff5252; }
 
 img { max-width: 100%; display: block; }
 
@@ -58,7 +103,7 @@ nav {
   position: fixed;
   top: 0; left: var(--side-bar); right: var(--side-bar);
   height: var(--nav-h);
-  background: rgba(10,10,10,0.95);
+  background: var(--nav-bg);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
   display: flex;
@@ -69,11 +114,14 @@ nav {
 }
 
 .nav-logo {
-  font-size: 1.2rem;
-  font-weight: 700;
+  font-family: var(--font-mono);
+  font-size: 1rem;
   color: var(--text);
   letter-spacing: 2px;
   text-transform: uppercase;
+  cursor: default;
+  user-select: none;
+  flex-shrink: 0;
 }
 .nav-logo span { color: var(--accent); }
 
@@ -88,8 +136,7 @@ nav {
   font-size: 0.78rem;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  font-family: 'Courier New', monospace;
-  font-weight: 600;
+  font-family: var(--font-mono);
   position: relative;
   padding: 0.35rem 0.75rem;
   border-radius: 3px;
@@ -115,15 +162,15 @@ nav {
 }
 .nav-links a:hover {
   color: var(--text);
-  background: rgba(204,0,0,0.06);
-  border-color: rgba(204,0,0,0.2);
+  background: rgba(229,57,53,0.06);
+  border-color: rgba(229,57,53,0.2);
 }
 .nav-links a:hover::before { opacity: 1; }
 .nav-links a:hover::after  { transform: scaleX(1); }
 .nav-links a.active {
   color: var(--accent);
-  background: rgba(204,0,0,0.08);
-  border-color: rgba(204,0,0,0.25);
+  background: rgba(229,57,53,0.08);
+  border-color: rgba(229,57,53,0.25);
 }
 .nav-links a.active::before { opacity: 1; }
 .nav-links a.active::after  { transform: scaleX(1); }
@@ -264,7 +311,7 @@ section {
   border-radius: 8px;
   padding: 6px;
   background: var(--bg2);
-  box-shadow: 0 0 24px rgba(204,0,0,0.18), 0 4px 32px rgba(0,0,0,0.5);
+  box-shadow: 0 0 24px rgba(229,57,53,0.18), 0 4px 32px rgba(0,0,0,0.5);
 }
 .hero-image-wrap img {
   width: 100%;
@@ -295,7 +342,7 @@ section {
 .hero-socials a:hover {
   border-color: var(--accent);
   color: var(--accent);
-  background: rgba(204,0,0,0.08);
+  background: rgba(229,57,53,0.08);
 }
 
 /* ---------- About ---------- */
@@ -366,7 +413,7 @@ section {
   border-radius: 2px;
   font-size: 0.78rem;
   color: var(--text-dim);
-  font-family: 'Courier New', monospace;
+  font-family: var(--font-mono);
   transition: var(--transition);
 }
 .skill-tag:hover {
@@ -471,12 +518,12 @@ section {
 .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.8rem; }
 .project-tag {
   padding: 0.2rem 0.5rem;
-  background: rgba(204,0,0,0.1);
-  border: 1px solid rgba(204,0,0,0.3);
+  background: rgba(229,57,53,0.1);
+  border: 1px solid rgba(229,57,53,0.3);
   border-radius: 2px;
   font-size: 0.7rem;
   color: var(--accent);
-  font-family: 'Courier New', monospace;
+  font-family: var(--font-mono);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -666,7 +713,7 @@ footer span { color: var(--accent); }
   padding: 0.3rem 1.2rem 0.9rem;
 }
 .tty-prompt {
-  color: #cc0000;
+  color: var(--accent);
   font-size: 0.82rem;
   white-space: nowrap;
   flex-shrink: 0;
@@ -676,48 +723,37 @@ footer span { color: var(--accent); }
   background: none;
   border: none;
   outline: none;
-  color: #e8e8e8;
+  color: var(--text);
   font-size: 0.82rem;
-  font-family: 'Courier New', monospace;
-  caret-color: #cc0000;
+  font-family: var(--font-mono);
+  caret-color: var(--accent);
 }
 
 /* tty line variants */
 .tl        { display: block; margin-bottom: 0.05rem; }
 .tl-cmd    { color: #e8e8e8; }
-.tl-cmd::before { content: 'david@portfolio:~$ '; color: #cc0000; }
+.tl-cmd::before { content: 'david@portfolio:~$ '; color: var(--accent); }
 .tl-out    { color: #aaa; }
 .tl-err    { color: #ff5555; }
 .tl-ok     { color: #28c840; }
-.tl-hl     { color: #cc0000; }
+.tl-hl     { color: var(--accent); }
 .tl-dim    { color: #444; }
 .tl-blank  { display: block; height: 0.6rem; }
-
-/* ---------- Light mode nav fix ---------- */
-html[data-theme="light"] nav {
-  background: rgba(244,244,244,0.95);
-}
 
 /* ---------- Theme toggle button ---------- */
 .theme-toggle {
   background: none;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border: none;
   color: var(--text-dim);
-  cursor: pointer;
-  width: 36px; height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   font-size: 1rem;
-  transition: border-color var(--transition), color var(--transition), background var(--transition);
+  line-height: 1;
+  padding: 0.35rem 0.5rem;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: opacity var(--transition);
   flex-shrink: 0;
 }
-.theme-toggle:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-  background: rgba(204,0,0,0.08);
-}
+.theme-toggle:hover { opacity: 0.7; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {

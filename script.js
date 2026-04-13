@@ -2,6 +2,24 @@
    CYBERSECURITY PORTFOLIO — script.js
    ========================================= */
 
+/* ---------- Scroll Progress Bar ---------- */
+const progressBar = document.getElementById('scroll-progress');
+let pctTimeout;
+
+function updateProgress() {
+  const scrolled = window.scrollY;
+  const total = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = total > 0 ? Math.round((scrolled / total) * 100) : 0;
+  progressBar.style.width = pct + '%';
+  progressBar.setAttribute('data-pct', pct + '%');
+  progressBar.classList.add('show-pct');
+  clearTimeout(pctTimeout);
+  pctTimeout = setTimeout(() => progressBar.classList.remove('show-pct'), 1200);
+}
+
+window.addEventListener('scroll', updateProgress, { passive: true });
+updateProgress();
+
 /* ---------- Theme Toggle ---------- */
 const themeToggle = document.getElementById('themeToggle');
 const savedTheme = localStorage.getItem('theme') || 'dark';
@@ -49,7 +67,7 @@ themeToggle.addEventListener('click', () => {
   }
   function echoCmd(raw) { tl(esc(raw), 'tl-cmd'); }
   function later(fn, ms) { setTimeout(fn, ms); }
-  function hlcmd(c) { return `<span style="color:#cc0000">${esc(c)}</span>`; }
+  function hlcmd(c) { return `<span style="color:#e53935">${esc(c)}</span>`; }
 
   /* ---- boot ---- */
   tl('Portfolio OS v1.3.37 (GNU/Linux 6.6.0-pwn3d x86_64)', 'tl-ok');
@@ -80,7 +98,7 @@ themeToggle.addEventListener('click', () => {
         ['history',         'Show command history'],
         ['clear',           'Clear terminal'],
       ].forEach(([c, d]) => {
-        tl(`&nbsp;&nbsp;<span style="color:#cc0000;display:inline-block;min-width:200px">${c}</span><span style="color:#444">— ${d}</span>`);
+        tl(`&nbsp;&nbsp;<span style="color:#e53935;display:inline-block;min-width:200px">${c}</span><span style="color:#444">— ${d}</span>`);
       });
       blank();
     },
