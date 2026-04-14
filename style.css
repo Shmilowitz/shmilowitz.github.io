@@ -337,10 +337,7 @@ section {
 
 /* ---------- About ---------- */
 .about-inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: start;
+  max-width: 720px;
 }
 .about-text p { color: var(--text-dim); margin-bottom: 1rem; font-size: 0.95rem; }
 .about-text p strong { color: var(--text); }
