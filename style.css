@@ -336,19 +336,7 @@ section {
 }
 
 /* ---------- About ---------- */
-.about-inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  align-items: start;
-}
-.about-terminal .terminal-window {
-  max-width: 100%;
-}
-.about-terminal .tty-body {
-  min-height: 220px;
-  max-height: 300px;
-}
+.about-inner { max-width: 720px; }
 .about-text p { color: var(--text-dim); margin-bottom: 1rem; font-size: 0.95rem; }
 .about-text p strong { color: var(--text); }
 .about-stats {
@@ -609,6 +597,58 @@ section {
   background: rgba(204,0,0,0.1);
   border: 1px solid rgba(204,0,0,0.3);
   color: var(--accent);
+}
+
+/* ---------- Floating Terminal Widget ---------- */
+#terminalWidget {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 900;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.75rem;
+}
+
+.terminal-fab {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--bg2);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition), box-shadow var(--transition);
+  box-shadow: 0 0 12px rgba(229,57,53,0.2);
+  flex-shrink: 0;
+}
+.terminal-fab:hover {
+  background: rgba(229,57,53,0.1);
+  box-shadow: 0 0 22px rgba(229,57,53,0.4);
+}
+
+.terminal-float-panel {
+  width: 520px;
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.terminal-float-panel.open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+@media (max-width: 600px) {
+  .terminal-float-panel {
+    width: calc(100vw - 2rem);
+    right: 0;
+  }
 }
 
 /* ---------- Footer ---------- */

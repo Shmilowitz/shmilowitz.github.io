@@ -399,8 +399,29 @@ themeToggle.addEventListener('click', () => {
     }
   });
 
-  document.querySelector('.terminal-window').addEventListener('click', () => ttyInput.focus());
+  document.querySelector('.terminal-float-panel .terminal-window').addEventListener('click', () => ttyInput.focus());
 })();
+
+/* ---------- Floating Terminal Widget ---------- */
+const terminalFab   = document.getElementById('terminalFab');
+const terminalPanel = document.getElementById('terminalPanel');
+const fabIconOpen   = terminalFab.querySelector('.fab-icon-open');
+const fabIconClose  = terminalFab.querySelector('.fab-icon-close');
+
+terminalFab.addEventListener('click', () => {
+  const isOpen = terminalPanel.classList.toggle('open');
+  fabIconOpen.style.display  = isOpen ? 'none'  : '';
+  fabIconClose.style.display = isOpen ? ''      : 'none';
+  if (isOpen) document.getElementById('ttyInput').focus();
+});
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && terminalPanel.classList.contains('open')) {
+    terminalPanel.classList.remove('open');
+    fabIconOpen.style.display  = '';
+    fabIconClose.style.display = 'none';
+  }
+});
 
 /* ---------- Mobile Nav ---------- */
 const hamburger = document.getElementById('hamburger');
