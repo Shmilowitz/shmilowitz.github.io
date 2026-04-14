@@ -422,10 +422,10 @@ navLinks.querySelectorAll('a').forEach(link => {
 const roles = [
   'Ethical Hacker',
   'Penetration Tester',
-  'Security Researcher',
-  'Red Team Operator',
-  'CTF Player',
-  'Bug Hunter',
+  'Security Solutions Consultant',
+  'GRC & Compliance Specialist',
+  'AI Enthusiast',
+  'Programmer at Heart',
 ];
 
 let roleIndex = 0;
