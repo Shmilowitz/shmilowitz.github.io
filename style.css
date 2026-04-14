@@ -524,7 +524,7 @@ section {
   font-size: 0.72rem;
   letter-spacing: 1px;
   text-transform: uppercase;
-  color: var(--text-dim);
+  color: var(--text);
   font-family: var(--font-mono);
   display: flex;
   align-items: center;
