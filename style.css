@@ -337,7 +337,17 @@ section {
 
 /* ---------- About ---------- */
 .about-inner {
-  max-width: 720px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+.about-terminal .terminal-window {
+  max-width: 100%;
+}
+.about-terminal .tty-body {
+  min-height: 220px;
+  max-height: 300px;
 }
 .about-text p { color: var(--text-dim); margin-bottom: 1rem; font-size: 0.95rem; }
 .about-text p strong { color: var(--text); }

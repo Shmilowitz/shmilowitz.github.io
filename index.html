@@ -25,7 +25,6 @@
       <li><a href="#projects">Projects</a></li>
       <li><a href="#writeups">Writeups</a></li>
       <li><a href="#contact">Contact</a></li>
-      <li><a href="#terminal">Terminal</a></li>
     </ul>
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode">☀️</button>
     <button class="hamburger" id="hamburger" aria-label="Toggle menu">
@@ -112,6 +111,29 @@
           underlying skill is the same: understanding how systems fail and making that legible
           to the people in the room.
         </p>
+      </div>
+      <div class="about-terminal reveal" style="transition-delay:.15s">
+        <div class="terminal-window">
+          <div class="terminal-titlebar">
+            <span class="ttydot ttydot-red"></span>
+            <span class="ttydot ttydot-yellow"></span>
+            <span class="ttydot ttydot-green"></span>
+            <span class="tty-title">david@portfolio: ~</span>
+          </div>
+          <div class="tty-body" id="ttyBody"></div>
+          <div class="tty-input-row">
+            <span class="tty-prompt">david@portfolio:~$&nbsp;</span>
+            <input
+              type="text"
+              id="ttyInput"
+              autocomplete="off"
+              autocorrect="off"
+              autocapitalize="off"
+              spellcheck="false"
+              aria-label="Terminal input"
+            />
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -486,36 +508,6 @@
           <div class="form-status" id="formStatus"></div>
           <button type="submit" class="btn btn-primary" style="align-self:flex-start">Send Message</button>
         </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== TERMINAL ===== -->
-  <section id="terminal">
-    <div class="reveal">
-      <p class="section-title">07 / Terminal</p>
-      <h2 class="section-heading">Interactive Shell</h2>
-      <div class="section-line"></div>
-    </div>
-    <div class="terminal-window reveal" style="transition-delay:.1s">
-      <div class="terminal-titlebar">
-        <span class="ttydot ttydot-red"></span>
-        <span class="ttydot ttydot-yellow"></span>
-        <span class="ttydot ttydot-green"></span>
-        <span class="tty-title">david@portfolio: ~</span>
-      </div>
-      <div class="tty-body" id="ttyBody"></div>
-      <div class="tty-input-row">
-        <span class="tty-prompt">david@portfolio:~$&nbsp;</span>
-        <input
-          type="text"
-          id="ttyInput"
-          autocomplete="off"
-          autocorrect="off"
-          autocapitalize="off"
-          spellcheck="false"
-          aria-label="Terminal input"
-        />
       </div>
     </div>
   </section>
