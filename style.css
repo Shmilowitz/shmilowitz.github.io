@@ -521,16 +521,24 @@ section {
 .project-body p { font-size: 0.85rem; color: var(--text-dim); margin-bottom: 1rem; flex: 1; }
 .project-links { display: flex; gap: 0.8rem; margin-top: auto; justify-content: space-between; }
 .project-links a {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   letter-spacing: 1px;
   text-transform: uppercase;
   color: var(--text-dim);
-  transition: color var(--transition);
+  font-family: var(--font-mono);
   display: flex;
   align-items: center;
   gap: 0.3rem;
+  padding: 0.3rem 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  transition: color var(--transition), border-color var(--transition), background var(--transition);
 }
-.project-links a:hover { color: var(--accent); }
+.project-links a:hover {
+  color: var(--accent);
+  border-color: var(--accent-dim);
+  background: rgba(229,57,53,0.06);
+}
 
 /* ---------- Contact ---------- */
 .contact-inner {
