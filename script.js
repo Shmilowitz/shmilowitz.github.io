@@ -87,10 +87,9 @@ themeToggle.addEventListener('click', () => {
         ['ls',              'List directory'],
         ['cat about.txt',   'Read about file'],
         ['cat skills.txt',  'Read skills file'],
-        ['cat projects.txt','Read projects file'],
+        ['cat projects.txt','Read CTF writeups'],
         ['cat contact.txt', 'Read contact info'],
         ['cat secret.enc',  '???'],
-        ['date',            'Current date & time'],
         ['man david',       'Read the manual'],
         ['matrix',          'Wake up, Neo...'],
         ['fortune',         'Random security wisdom'],
@@ -111,7 +110,7 @@ themeToggle.addEventListener('click', () => {
         '│  ──────────────────────────────────────────  │',
         '│  Role     : Cyber Security Specialist         │',
         '│  Location : Denmark  (remote-friendly)        │',
-        '│  Focus    : NIS2 · Detection · OffSec         │',
+        '│  Focus    : OffSec · GRC · Pre-Sales · AI      │',
         '│  Status   : chmod 777 /the/internet           │',
         '│  Clearance: AUTHORIZED                        │',
         '│  Coffee   : CRITICAL — refill required        │',
@@ -122,48 +121,55 @@ themeToggle.addEventListener('click', () => {
     },
 
     ls() {
-      tl('about.txt&nbsp;&nbsp; skills.txt&nbsp;&nbsp; projects/&nbsp;&nbsp; contact.txt&nbsp;&nbsp; <span style="color:#444">secret.enc</span>');
+      tl('about.txt&nbsp;&nbsp; skills.txt&nbsp;&nbsp; writeups/&nbsp;&nbsp; contact.txt&nbsp;&nbsp; <span style="color:#444">secret.enc</span>');
     },
 
     'cat about.txt'() {
       blank();
-      tl('Cybersecurity professional at the intersection of:');
-      tl('&nbsp;&nbsp;• NIS2 compliance &amp; critical infrastructure supervision');
-      tl('&nbsp;&nbsp;• Detection engineering (NDR / SIEM)');
-      tl('&nbsp;&nbsp;• Offensive security &amp; attack simulation');
-      tl('&nbsp;&nbsp;• Pre-sales &amp; technical communication');
+      tl('Security professional working across offensive research,');
+      tl('governance, and technical sales.');
       blank();
-      tl('"Think like an attacker. Defend like a professional."', 'tl-hl');
+      tl('&nbsp;&nbsp;• Offensive security &amp; penetration testing');
+      tl('&nbsp;&nbsp;• GRC — NIS2, ISO 27001, DORA, D-m&aelig;rket');
+      tl('&nbsp;&nbsp;• Detection engineering (NDR / SIEM / Logpoint)');
+      tl('&nbsp;&nbsp;• Pre-sales &amp; technical sales for security solutions');
+      tl('&nbsp;&nbsp;• AI governance, agentic workflows &amp; advisory');
       blank();
     },
 
     'cat skills.txt'() {
       blank();
-      tl('[ Compliance &amp; GRC ]', 'tl-hl');
-      tl('&nbsp;&nbsp;NIS2 · ISO 27001 · Governance · Regulatory Auditing');
+      tl('[ Cyber Security ]', 'tl-hl');
+      tl('&nbsp;&nbsp;Penetration Testing · Red Teaming · Vulnerability Assessment');
+      tl('&nbsp;&nbsp;Kali · Metasploit · Burp Suite · Nmap · Wireshark · OSINT');
       blank();
-      tl('[ Detection Engineering ]', 'tl-hl');
-      tl('&nbsp;&nbsp;NDR · SIEM · Logpoint · Detection Logic · Threat Intel');
+      tl('[ Governance &amp; Compliance ]', 'tl-hl');
+      tl('&nbsp;&nbsp;NIS2 · ISO 27001 · DORA · D-m&aelig;rket · Risk Management');
+      tl('&nbsp;&nbsp;Regulatory Auditing · Policy Frameworks · Gap Analysis');
       blank();
-      tl('[ Offensive Security ]', 'tl-hl');
-      tl('&nbsp;&nbsp;Attack Simulation · Red Teaming · Penetration Testing');
+      tl('[ Technical Sales ]', 'tl-hl');
+      tl('&nbsp;&nbsp;NDR / SIEM Pre-sales · Solution Architecture · PoC Delivery');
+      tl('&nbsp;&nbsp;Stakeholder Presentations · RFP Responses · Customer Success');
       blank();
-      tl('[ Tools ]', 'tl-hl');
-      tl('&nbsp;&nbsp;Kali · Metasploit · Burp Suite · Wireshark · Nmap · Python');
+      tl('[ Coding &amp; Development ]', 'tl-hl');
+      tl('&nbsp;&nbsp;Python · Bash · JavaScript · SQL · PowerShell');
+      tl('&nbsp;&nbsp;SIEM Query Languages · Git · Automation Scripting');
+      blank();
+      tl('[ AI &amp; Advisory ]', 'tl-hl');
+      tl('&nbsp;&nbsp;AI Governance &amp; Risk · Agentic Workflow Design');
+      tl('&nbsp;&nbsp;AI Ethics &amp; Accountability · LLM Evaluation &amp; Testing');
+      tl('&nbsp;&nbsp;Copilot / AI Tool Integration · Change Management for AI');
       blank();
     },
 
     'cat projects.txt'() {
       blank();
-      tl('projects/', 'tl-hl');
-      tl('&nbsp;&nbsp;├── ReconFrame    — Automated OSINT reconnaissance framework');
-      tl('&nbsp;&nbsp;├── PortGhost     — Stealthy IDS-evasion port scanner');
-      tl('&nbsp;&nbsp;├── LogSentinel   — ML anomaly detection for auth logs');
-      tl('&nbsp;&nbsp;├── BufferWarden  — Educational buffer overflow toolkit');
-      tl('&nbsp;&nbsp;├── XSSHunter Pro — Browser extension for XSS testing');
-      tl('&nbsp;&nbsp;└── ADMapper      — Active Directory enumeration script');
+      tl('writeups/', 'tl-hl');
+      tl('&nbsp;&nbsp;├── &Oslash;velsesoperation  — FE-CTF 2024 · 11-step web/crypto challenge');
+      tl('&nbsp;&nbsp;├── Ringaling-Dding  — NFCCTF · Firmware reverse engineering');
+      tl('&nbsp;&nbsp;└── Writeup Template — Jekyll-based CTF writeup framework');
       blank();
-      tl('↑ Scroll up to the Projects section for full details.', 'tl-dim');
+      tl('↑ Scroll to the Writeups section for links &amp; full details.', 'tl-dim');
       blank();
     },
 
@@ -180,10 +186,6 @@ themeToggle.addEventListener('click', () => {
     'cat secret.enc'() {
       tl('Zm9yYmlkZGVuIGtub3dsZWRnZQ==', 'tl-dim');
       later(() => tl('...good luck with that.', 'tl-hl'), 400);
-    },
-
-    date() {
-      tl(new Date().toString());
     },
 
     clear() {
@@ -277,17 +279,19 @@ themeToggle.addEventListener('click', () => {
       tl('&nbsp;&nbsp;&nbsp;&nbsp;david — cybersecurity professional &amp; occasional menace');
       blank();
       tl('SYNOPSIS', 'tl-hl');
-      tl('&nbsp;&nbsp;&nbsp;&nbsp;david [--pen-test] [--audit] [--detect] [--coffee] [--hire]');
+      tl('&nbsp;&nbsp;&nbsp;&nbsp;david [--pen-test] [--audit] [--pre-sales] [--ai] [--coffee] [--hire]');
       blank();
       tl('DESCRIPTION', 'tl-hl');
-      tl('&nbsp;&nbsp;&nbsp;&nbsp;Multi-threaded security specialist with NIS2 compliance modules,');
-      tl('&nbsp;&nbsp;&nbsp;&nbsp;a built-in red-team engine, and a dangerously high coffee tolerance.');
-      tl('&nbsp;&nbsp;&nbsp;&nbsp;Runs best on unsolved CTFs and existential firewall questions.');
+      tl('&nbsp;&nbsp;&nbsp;&nbsp;Multi-threaded security professional spanning offensive research,');
+      tl('&nbsp;&nbsp;&nbsp;&nbsp;governance &amp; compliance, technical sales, and AI advisory.');
+      tl('&nbsp;&nbsp;&nbsp;&nbsp;Understands threats well enough to build defences that hold,');
+      tl('&nbsp;&nbsp;&nbsp;&nbsp;communicate risk to leadership, and turn security into a capability.');
       blank();
       tl('OPTIONS', 'tl-hl');
       tl('&nbsp;&nbsp;&nbsp;&nbsp;--pen-test    Execute authorized penetration test');
-      tl('&nbsp;&nbsp;&nbsp;&nbsp;--audit       Conduct NIS2 compliance audit');
-      tl('&nbsp;&nbsp;&nbsp;&nbsp;--detect      Activate detection engineering mode');
+      tl('&nbsp;&nbsp;&nbsp;&nbsp;--audit       Conduct NIS2 / ISO 27001 / DORA compliance audit');
+      tl('&nbsp;&nbsp;&nbsp;&nbsp;--pre-sales   Deliver NDR/SIEM solution demo &amp; PoC');
+      tl('&nbsp;&nbsp;&nbsp;&nbsp;--ai          Engage AI governance &amp; agentic workflow advisory');
       tl('&nbsp;&nbsp;&nbsp;&nbsp;--coffee      +300% performance (side effects: jitter, genius)');
       tl('&nbsp;&nbsp;&nbsp;&nbsp;--hire        Unlock full potential <span style="color:#444">— highly recommended</span>');
       blank();
@@ -362,7 +366,7 @@ themeToggle.addEventListener('click', () => {
     }
 
     if (low === 'ls skills' || low === 'ls skills/') { cmds['cat skills.txt'](); return; }
-    if (low === 'ls projects' || low === 'ls projects/') { cmds['cat projects.txt'](); return; }
+    if (low === 'ls projects' || low === 'ls projects/' || low === 'ls writeups' || low === 'ls writeups/') { cmds['cat projects.txt'](); return; }
 
     // unknown
     tl(`bash: ${esc(input)}: command not found`, 'tl-err');
