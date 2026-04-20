@@ -92,7 +92,6 @@ themeToggle.addEventListener('click', () => {
         ['cat secret.enc',  '???'],
         ['man david',       'Read the manual'],
         ['matrix',          'Wake up, Neo...'],
-        ['fortune',         'Random security wisdom'],
         ['hire david',      '👀'],
         ['history',         'Show command history'],
         ['clear',           'Clear terminal'],
@@ -195,22 +194,6 @@ themeToggle.addEventListener('click', () => {
     history() {
       if (!histLog.length) { tl('No commands in history yet.', 'tl-dim'); return; }
       histLog.forEach((c, i) => tl(`&nbsp;&nbsp;${String(i + 1).padStart(3, ' ')}  ${esc(c)}`));
-    },
-
-    fortune() {
-      const qs = [
-        '"The only truly secure system is one that is powered off, cast in a block of concrete, and sealed in a lead-lined room." — Gene Spafford',
-        '"Security through obscurity is no security at all."',
-        '"Amateurs hack systems, professionals hack people." — Bruce Schneier',
-        '"Passwords are like underwear: change them often, don\'t share them, and don\'t leave them out where people can see them."',
-        '"There are two types of companies: those that have been hacked, and those that don\'t know it yet." — John Chambers',
-        '"It takes 20 years to build a reputation and a few minutes of cyber-incident to ruin it." — Stéphane Nappo',
-        '"The hacker mindset doesn\'t actually see boundaries." — Paul Buchheit',
-        '"In God we trust. All others we monitor."',
-      ];
-      blank();
-      tl(esc(qs[Math.floor(Math.random() * qs.length)]), 'tl-hl');
-      blank();
     },
 
     matrix() {
